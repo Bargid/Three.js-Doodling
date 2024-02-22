@@ -1,4 +1,4 @@
-import { Html, PivotControls, OrbitControls, TransformControls } from '@react-three/drei'
+import { MeshReflectorMaterial, Float, Text, Html, PivotControls, OrbitControls, TransformControls } from '@react-three/drei'
 import { useRef } from 'react'
 
 
@@ -43,8 +43,33 @@ export default function Experience()
 
         <mesh position-y={ - 1 } rotation-x={ - Math.PI * 0.5 } scale={ 10 }>
             <planeGeometry />
-            <meshStandardMaterial color="greenyellow" />
+            {/* <meshStandardMaterial color="greenyellow" /> */}
+            <MeshReflectorMaterial 
+                resolution={ 1024 }
+                blur={ [1000, 1000] }
+                mixBlur={ 0.2 }
+                mirror={ 0.1 }
+                color="greenyellow"
+            />
         </mesh>
+
+
+        <Float
+            speed={ 3 }
+            floatIntensity={ 1 }
+        >
+            <Text
+                font="./bangers-v20-latin-regular.woff"
+                fontSize={ 0.5 }
+                color="salmon"
+                position-y={ 2 }
+                maxWidth={ 1 }
+                textAlign="center"
+            >
+                I LOVE R3F
+                {/* <meshNormalMaterial /> */}
+            </Text>
+        </Float>
 
     </>
 }
